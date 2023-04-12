@@ -4,9 +4,13 @@ import Tweet from "../components/Tweet";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 import CommentModal from "./CommentModal";
+import { QueryDocumentSnapshot } from "firebase/firestore";
+import { DocumentData } from "firebase/firestore";
 
 function Feed() {
-  const [tweets, setTweets] = useState([]);
+  const [tweets, setTweets] = useState<QueryDocumentSnapshot<DocumentData>[]>(
+    []
+  );
 
   useEffect(() => {
     const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
@@ -23,7 +27,7 @@ function Feed() {
         <h2 className="text-lg sm:text-xl font-bold">Home</h2>
       </div>
       <TweetInput />
-      
+
       <div className="pb-36">
         {tweets.map((tweet) => (
           <Tweet key={tweet.id} data={tweet.data()} id={tweet.id} />

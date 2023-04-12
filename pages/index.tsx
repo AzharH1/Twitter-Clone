@@ -14,10 +14,11 @@ import {
   CheckIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/solid";
+import { RootState } from "../redux/store";
 
 export default function Home() {
-  const user = useSelector((state) => state.user);
-  const tweet = useSelector((state) => state.open.tweet);
+ const user = useSelector((state: RootState) => state.user);
+ const tweet = useSelector((state: RootState) => state.open.tweet);
 
   return (
     <div className="text-white">
@@ -45,7 +46,7 @@ export default function Home() {
             />
           </div>
           <div className="w-[300px] mt-3 h-[500px] bg-white bg-opacity-10 rounded-2xl">
-            <h1 className="p-3 font-bold text-xl">What's happening</h1>
+            <h1 className="p-3 font-bold text-xl">What&apos;s happening</h1>
             <div className="p-3 relative">
               <DotsHorizontalIcon className="w-5 text-gray-600 absolute right-4" />
               <p className="text-xs text-gray-500">Trending in US</p>
